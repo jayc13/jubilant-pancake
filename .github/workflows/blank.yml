@@ -17,6 +17,7 @@ jobs:
   # This workflow contains a single job called "build"
   build:
     runs-on: ubuntu-latest
+    environment: ${{ vars.ENVIRONMENT_STAGE }}
     steps:
     - name: "Echo in file"
       env:
