@@ -27,6 +27,6 @@ jobs:
       - name: Run a one-line script
         run: |
           echo "${{ vars }}"
-          echo "${{ inputs.environment }}"
+          echo "${{ env.TEST }}"
         env:
           TEST: ${{ vars.ENVIRONMENT_STAGE }}
