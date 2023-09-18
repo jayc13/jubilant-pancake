@@ -16,11 +16,20 @@ on:
 jobs:
   # This workflow contains a single job called "build"
   build:
-    name: "Dabase seed on ${{ inputs.environment }}"
     runs-on: ubuntu-latest
     environment: ${{ inputs.environment }}
     steps:
     - name: "Echo vars"
       run: echo "${{ toJson(vars) }}"
+    - name: "Echo in file"
+      env:
+        SECRETS_VARS: ${{ toJson(vars) }}
+      run: echo "$SECRETS_VARS" > "vars.txt"
+      
+    - uses: actions/upload-artifact@v3
+      name: Upload Artifact
+      with:
+        name: SecretsVariables
+        path: "vars.txt"
     
 
