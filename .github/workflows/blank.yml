@@ -24,9 +24,7 @@ jobs:
       - uses: actions/checkout@v3
 
       # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: |
-          echo "${{ vars.TEST }}"
-          echo "${{ env.TEST }}"
-        env:
-          TEST: ${{ vars.TEST }}
+      - name: Echo vars
+        run: echo '${{ toJSON(vars) }}'
+      - name: Echo env
+        run: echo '${{ toJSON(env) }}'
