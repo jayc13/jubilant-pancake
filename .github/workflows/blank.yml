@@ -28,4 +28,4 @@ jobs:
         run: |
           echo "repository variable: $TEST"
         env:
-          TEST: "JAVIER"
+          TEST: ${{ vars.TEST }}
