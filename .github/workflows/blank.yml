@@ -32,7 +32,9 @@ jobs:
     - name: Install JSON to ENV lib
       run: npm install -g json-to-env
     - name: Generate .env file
-      run: json-to-env vars.json .env
+      run: |
+        json-to-env vars.json .env
+        sed -i -e 's/export //g' .env
     - name: Print env file
       run: cat .env
     
