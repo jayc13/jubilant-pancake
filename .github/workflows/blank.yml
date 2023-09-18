@@ -20,6 +20,9 @@ jobs:
     runs-on: ubuntu-latest
     environment: ${{ vars.ENVIRONMENT_STAGE }}
     # Steps represent a sequence of tasks that will be executed as part of the job
+    env:
+      # Setting an environment variable with the value of a configuration variable
+      env_var: ${{ vars.ENV_CONTEXT_VAR }}
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
@@ -31,6 +34,4 @@ jobs:
         run: echo '${{ toJSON(vars) }}'
       - name: Echo env
         run: echo '${{ toJSON(env) }}'
-    env:
-      # Setting an environment variable with the value of a configuration variable
-      env_var: ${{ vars.ENV_CONTEXT_VAR }}
+
