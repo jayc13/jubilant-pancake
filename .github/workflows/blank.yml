@@ -26,7 +26,7 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: |
-          echo "repository variable: $TEST"
-          echo "${{ inputs.environment }} "
+          echo "${{ vars }}"
+          echo "${{ inputs.environment }}"
         env:
           TEST: ${{ vars.ENVIRONMENT_STAGE }}
