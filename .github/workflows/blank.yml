@@ -26,7 +26,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Echo Test
-        run: echo '${{ toJSON(env_var) }}'
+        run: echo '${{ env_var }}'
       - name: Echo vars
         run: echo '${{ toJSON(vars) }}'
       - name: Echo env
