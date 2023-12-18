@@ -28,19 +28,11 @@ jobs:
       with:
         retries: 3
         script: |
-          if (${{ startsWith(github.event.inputs.ref, 'v') }}) {
-            return github.rest.repos.getReleaseByTag({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              tag: "${{ inputs.tags }}"
-            })
-          } else {
-            return github.rest.repos.getReleaseByTag({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              tag: "${{ github.ref_name }}"
-            })
-          }
+          return github.rest.repos.getReleaseByTag({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            tag: "${{ inputs.tags }}"
+          })
     - name: Output Github Release
       if: steps.get-release.outputs.result != ''
       run: echo '${{ steps.get-release.outputs.result }}' | jq -r '.data.tag_name'
