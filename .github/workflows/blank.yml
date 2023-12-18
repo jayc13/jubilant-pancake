@@ -6,6 +6,10 @@ name: CI
 on:
   workflow_dispatch:
     inputs:
+      tags:
+        description: 'Version to be Deployed'
+        required: true
+        type: string
       environment:
         description: 'Environment to run tests against'
         type: environment
