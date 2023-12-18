@@ -9,7 +9,7 @@ on:
       tags:
         description: 'Version to be Deployed'
         required: true
-        type: string
+        type: release
       environment:
         description: 'Environment to run tests against'
         type: environment
@@ -35,7 +35,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
       with:
-        ref: inputs.tags
+        ref: ${{ inputs.tags }}
 
     
 
