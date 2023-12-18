@@ -32,7 +32,7 @@ jobs:
             return github.rest.repos.getReleaseByTag({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              tag: "${{ github.event.inputs.ref }}"
+              tag: "${{ inputs.tags }}"
             })
           } else {
             return github.rest.repos.getReleaseByTag({
