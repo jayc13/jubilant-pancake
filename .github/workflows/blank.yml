@@ -23,18 +23,19 @@ jobs:
     runs-on: ubuntu-latest
     environment: ${{ inputs.environment }}
     steps:
-    - uses: actions/github-script@v6
-      id: get-release
+    - name: Verify if Tag exist
+      uses: actions/github-script@v6
       with:
-        retries: 3
         script: |
           return github.rest.repos.getReleaseByTag({
             owner: context.repo.owner,
             repo: context.repo.repo,
             tag: "${{ inputs.tags }}"
           })
-    - name: Output Github Release
-      if: steps.get-release.outputs.result != ''
-      run: echo '${{ steps.get-release.outputs.result }}' | jq -r '.data.tag_name'
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        ref: inputs.tags
+
     
 
