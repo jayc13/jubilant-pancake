@@ -9,7 +9,7 @@ on:
       tags:
         description: 'Version to be Deployed'
         required: true
-        type: release
+        type: string
       environment:
         description: 'Environment to run tests against'
         type: environment
