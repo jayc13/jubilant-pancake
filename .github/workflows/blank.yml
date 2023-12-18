@@ -23,23 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: ${{ inputs.environment }}
     steps:
-    - name: "Echo vars"
-      run: echo "${{ toJson(vars) }}"
-    - name: "Echo in file"
-      env:
-        SECRETS_VARS: ${{ toJson(vars) }}
-      run: echo "$SECRETS_VARS" > "vars.json"
-    - name: Install Node
-      uses: actions/setup-node@v3
-      with:
-        node-version: 20
-    - name: Install JSON to ENV lib
-      run: npm install -g json-to-env
-    - name: Generate .env file
-      run: |
-        json-to-env vars.json .env
-        sed -i -e 's/export //g' .env
-    - name: Print env file
-      run: cat .env
+    - name: "Echo"
+      run: echo "Hello there!"
     
 
